@@ -1,2 +1,3 @@
 files/*
 config.local
+.DS_Store
