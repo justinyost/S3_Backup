@@ -10,6 +10,9 @@ There is a batch of config settings needed to get this running. These are at the
 	WEBROOT_LOCAL_PATH
 	BACKUP_LOCAL_PATH
 	AMAZON_S3_PATH
+	MYSQL_DUMP_ACTIVE
+	POSTGRESQL_DUMP_ACTIVE
+	MONGODB_DUMP_ACTIVE
 
 Needed Command Line Tools
 	Command Line S3 Clien: http://s3tools.org/s3cmd
