@@ -4,27 +4,18 @@ This script runs and creates daily (stored for 7 days), weekly (stored for 28 da
 
 Config Settings
 
-There is a batch of config settings needed to get this running. These are at the top of the shell script and none of the them need to be in quotes (as far as I have tested)
-
-	MYSQL_DB_PASSWORD
-	WEBROOT_LOCAL_PATH
-	BACKUP_LOCAL_PATH
-	AMAZON_S3_PATH
-	MYSQL_DUMP_ACTIVE
-	POSTGRESQL_DUMP_ACTIVE
-	MONGODB_DUMP_ACTIVE
+There is a batch of config settings needed to get this running. These are in the config.sh.default shell script and none of the them need to be in quotes (as far as I have tested). Copy and rename the config.sh.default to config.sh and set the values to your particular setup.
 
 Needed Command Line Tools
-	Command Line S3 Clien: http://s3tools.org/s3cmd
+	Command Line S3 Client: http://s3tools.org/s3cmd
 
 Installation
 	Manual
-		Download this: http://github.com/jtyost2/S3_Backup/zipball/master
+		In your local directory type: wget http://github.com/jtyost2/S3_Backup/zipball/master
 		Unzip that download.
 
 	Git Clone
-		In your plugin directory type
-		git clone git://github.com/jtyost2/S3_Backup.git S3_Backup
+		In your local directory type: git clone git://github.com/jtyost2/S3_Backup.git S3_Backup
 		
 To Do
-	Be able to setup a config file to import settings from
+	Add additional database backups

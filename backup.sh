@@ -1,13 +1,7 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-#Local Settings and Options
-MYSQL_DB_PASSWORD=ThisIsYourMySQLRootPassword
-WEBROOT_LOCAL_PATH=/path/to/your/local/webroot
-BACKUP_LOCAL_PATH=/path/to/where/your/backups/will/be/locally
-AMAZON_S3_PATH=s3://BucketName/folder_in_bucket/
-MYSQL_DUMP_ACTIVE=TRUE
-POSTGRESQL_DUMP_ACTIVE=TRUE
-MONGODB_DUMP_ACTIVE=TRUE
+#Import settings from config.sh
+source config.sh
 
 #DateTimeString
 THEDATE=`date +%Y_%m_%d_%H_%M`
