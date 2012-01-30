@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #Import settings from config.sh
-source config.sh
+source ./config.sh
 
 #DateTimeString
 THEDATE=`date +%Y_%m_%d_%H_%M`
