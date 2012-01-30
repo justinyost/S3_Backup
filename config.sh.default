@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 #Local Settings and Options
+MYSQL_DB_USERNAME=ThisIsYourMySQLUsername
 MYSQL_DB_PASSWORD=ThisIsYourMySQLRootPassword
+POSTGRES_DB_USERNAME=ThisIsYourPostgresUsername
+MONGO_DB_USERNAME=ThisIsYourMongoDBUsernameå
+MONGO_DB_PASSWORD=ThisIsYourMongoDBPassword
 WEBROOT_LOCAL_PATH=/path/to/your/local/webroot
 BACKUP_LOCAL_PATH=/path/to/where/your/backups/will/be/locally
 AMAZON_S3_PATH=s3://BucketName/folder_in_bucket/
