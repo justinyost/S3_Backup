@@ -24,7 +24,7 @@ fi
 find ${BACKUP_LOCAL_PATH}daily_db_backup_* -mtime +7 -exec rm -f {} \;
 
 #Tar and Gzip WWW Folder for Daily Backup
-tar -cf ${BACKUP_LOCAL_PATH}daily_site_backup_${THEDATE}.tar ${WEBROOT_LOCAL_PATH}
+tar -cf ${BACKUP_LOCAL_PATH}daily_site_backup_${THEDATE}.tar -X ./tar_exclude.txt ${WEBROOT_LOCAL_PATH}
 gzip -9 ${BACKUP_LOCAL_PATH}daily_site_backup_${THEDATE}.tar
 
 #Find and delete old daily site backups that are over a week old
@@ -50,7 +50,7 @@ then
 	find ${BACKUP_LOCAL_PATH}weekly_db_backup_* -mtime +28 -exec rm -f {} \;
 	
 	#Tar and Gzip WWW Folder for Weekly Backup
-	tar -cf ${BACKUP_LOCAL_PATH}weekly_site_backup_${THEDATE}.tar ${WEBROOT_LOCAL_PATH}
+	tar -cf ${BACKUP_LOCAL_PATH}weekly_site_backup_${THEDATE}.tar -X ./tar_exclude.txt ${WEBROOT_LOCAL_PATH}
 	gzip -9 ${BACKUP_LOCAL_PATH}weekly_site_backup_${THEDATE}.tar
 	
 	#Find and delete old daily site backups that are over 4 weeks old
@@ -77,7 +77,7 @@ then
 	find ${BACKUP_LOCAL_PATH}monthly_db_backup_* -mtime +356 -exec rm -f {} \;
 	
 	#Tar and Gzip WWW Folder for monthly Backup
-	tar -cf ${BACKUP_LOCAL_PATH}monthly_site_backup_${THEDATE}.tar ${WEBROOT_LOCAL_PATH}
+	tar -cf ${BACKUP_LOCAL_PATH}monthly_site_backup_${THEDATE}.tar -X ./tar_exclude.txt ${WEBROOT_LOCAL_PATH}
 	gzip -9 ${BACKUP_LOCAL_PATH}monthly_site_backup_${THEDATE}.tar
 	
 	#Find and delete old monthly site backups that are over 1 year old

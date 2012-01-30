@@ -2,3 +2,4 @@ files/*
 config.local
 .DS_Store
 config.sh
+tar_exclude.txt
