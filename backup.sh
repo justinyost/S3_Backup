@@ -77,4 +77,4 @@ fi
 #S3 Sync
 s3cmd sync --delete-removed ${BACKUP_LOCAL_PATH} $AMAZON_S3_PATH
 
-echo "S3Backup Completed For: ${THEDATE}"
+echo "S3Backup Completed For: ${THEDATE}" >&2
