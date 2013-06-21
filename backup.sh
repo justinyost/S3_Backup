@@ -21,9 +21,6 @@ then
 	mongodump --host localhost --username ${MONGO_DB_USERNAME} --password ${MONGO_DB_PASSWORD} | gzip -9 > ${BACKUP_LOCAL_PATH}daily_db_backup_mongodb_${THEDATE}.sql.gz
 fi
 
-#Find and delete old daily database backups that are over a week old
-find ${BACKUP_LOCAL_PATH}daily_db_backup_* -mtime +7 -exec rm -f {} \;
-
 #Tar and Gzip WWW Folder for Daily Backup
 tar -cf ${BACKUP_LOCAL_PATH}daily_site_backup_${THEDATE}.tar -X ${DIR}/tar_exclude.txt ${WEBROOT_LOCAL_PATH}
 gzip -9 ${BACKUP_LOCAL_PATH}daily_site_backup_${THEDATE}.tar
@@ -46,13 +43,10 @@ then
 	then
 		cp ${BACKUP_LOCAL_PATH}daily_db_backup_mongodb_${THEDATE}.sql.gz ${BACKUP_LOCAL_PATH}weekly_db_backup_mongodb_${THEDATE}.sql.gz
 	fi
-	
-	#Find and delete old weekly database backups that are over 4 weeks old
-	find ${BACKUP_LOCAL_PATH}weekly_db_backup_* -mtime +28 -exec rm -f {} \;
-	
+
 	#Copy Daily Webroot Backup for Weekly Backup
 	cp ${BACKUP_LOCAL_PATH}daily_site_backup_${THEDATE}.tar.gz ${BACKUP_LOCAL_PATH}weekly_site_backup_${THEDATE}.tar.gz
-	
+
 	#Find and delete old daily site backups that are over 4 weeks old
 	find ${BACKUP_LOCAL_PATH}weekly_site_backup_* -mtime +28 -exec rm -f {} \;
 fi
@@ -72,13 +66,10 @@ then
 	then
 		cp ${BACKUP_LOCAL_PATH}daily_db_backup_mongodb_${THEDATE}.sql.gz ${BACKUP_LOCAL_PATH}monthly_db_backup_mongodb_${THEDATE}.sql.gz
 	fi
-	
-	#Find and delete old monthly database backups that are over 1 year old
-	find ${BACKUP_LOCAL_PATH}monthly_db_backup_* -mtime +356 -exec rm -f {} \;
-	
+
 	#Copy Daily Webroot Backup for Monthly Backup
 	cp ${BACKUP_LOCAL_PATH}daily_site_backup_${THEDATE}.tar.gz ${BACKUP_LOCAL_PATH}monthly_site_backup_${THEDATE}.tar.gz
-	
+
 	#Find and delete old monthly site backups that are over 1 year old
 	find ${BACKUP_LOCAL_PATH}monthly_site_backup_* -mtime +356 -exec rm -f {} \;
 fi
