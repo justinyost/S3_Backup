@@ -8,17 +8,21 @@ source ${DIR}/config.sh
 THEDATE=`date +%Y_%m_%d_%H_%M`
 
 #Dump Databases for Daily DB Backups
-if $MYSQL_DUMP_ACTIVE;
+if ${MYSQL_DUMP_ACTIVE};
 then
 	mysqldump --add-drop-table --all-databases --user=${MYSQL_DB_USERNAME} --password=${MYSQL_DB_PASSWORD} | gzip -9 > ${BACKUP_LOCAL_PATH}daily_db_backup_mysql_${THEDATE}.sql.gz
 fi
-if $POSTGRESQL_DUMP_ACTIVE;
+if ${POSTGRESQL_DUMP_ACTIVE};
 then
 	pg_dumpall --username=${POSTGRES_DB_USERNAME} | gzip -9 > ${BACKUP_LOCAL_PATH}daily_db_backup_postgresql_${THEDATE}.sql.gz
 fi
-if $MONGODB_DUMP_ACTIVE;
+if ${MONGODB_DUMP_ACTIVE};
 then
 	mongodump --host localhost --username ${MONGO_DB_USERNAME} --password ${MONGO_DB_PASSWORD} | gzip -9 > ${BACKUP_LOCAL_PATH}daily_db_backup_mongodb_${THEDATE}.sql.gz
+fi
+if ${SQLITE_DUMP_ACTIVE};
+then
+	gzip -9 < ${SQLITE_PATH} > ${BACKUP_LOCAL_PATH}daily_db_backup_sqlite_${THEDATE}.gz
 fi
 
 #Tar and Gzip WWW Folder for Daily Backup
@@ -31,17 +35,21 @@ find ${BACKUP_LOCAL_PATH}daily_site_backup_* -mtime +7 -exec rm -f {} \;
 if [ `date +%u` = 1 ]
 then
 	#Copy Daily Database Backup for Weekly DB Backups
-	if $MYSQL_DUMP_ACTIVE;
+	if ${MYSQL_DUMP_ACTIVE};
 	then
 		cp ${BACKUP_LOCAL_PATH}daily_db_backup_mysql_${THEDATE}.sql.gz ${BACKUP_LOCAL_PATH}weekly_db_backup_mysql_${THEDATE}.sql.gz
 	fi
-	if $POSTGRESQL_DUMP_ACTIVE;
+	if ${POSTGRESQL_DUMP_ACTIVE};
 	then
 		cp ${BACKUP_LOCAL_PATH}daily_db_backup_postgresql_${THEDATE}.sql.gz ${BACKUP_LOCAL_PATH}weekly_db_backup_postgresql_${THEDATE}.sql.gz
 	fi
-	if $MONGODB_DUMP_ACTIVE;
+	if ${MONGODB_DUMP_ACTIVE};
 	then
 		cp ${BACKUP_LOCAL_PATH}daily_db_backup_mongodb_${THEDATE}.sql.gz ${BACKUP_LOCAL_PATH}weekly_db_backup_mongodb_${THEDATE}.sql.gz
+	fi
+	if ${SQLITE_DUMP_ACTIVE};
+	then
+		cp ${BACKUP_LOCAL_PATH}daily_db_backup_sqlite_${THEDATE}.gz ${BACKUP_LOCAL_PATH}weekly_db_backup_sqlite_${THEDATE}.gz
 	fi
 
 	#Copy Daily Webroot Backup for Weekly Backup
@@ -54,17 +62,21 @@ fi
 if [ `date +%d` = 01 ]
 then
 	#Copy Daily Database Backup for Monthly DB Backups
-	if $MYSQL_DUMP_ACTIVE;
+	if ${MYSQL_DUMP_ACTIVE};
 	then
 		cp ${BACKUP_LOCAL_PATH}daily_db_backup_mysql_${THEDATE}.sql.gz ${BACKUP_LOCAL_PATH}monthly_db_backup_mysql_${THEDATE}.sql.gz
 	fi
-	if $POSTGRESQL_DUMP_ACTIVE;
+	if ${POSTGRESQL_DUMP_ACTIVE};
 	then
 		cp ${BACKUP_LOCAL_PATH}daily_db_backup_postgresql_${THEDATE}.sql.gz ${BACKUP_LOCAL_PATH}monthly_db_backup_postgresql_${THEDATE}.sql.gz
 	fi
-	if $MONGODB_DUMP_ACTIVE;
+	if ${MONGODB_DUMP_ACTIVE};
 	then
 		cp ${BACKUP_LOCAL_PATH}daily_db_backup_mongodb_${THEDATE}.sql.gz ${BACKUP_LOCAL_PATH}monthly_db_backup_mongodb_${THEDATE}.sql.gz
+	fi
+	if ${SQLITE_DUMP_ACTIVE};
+	then
+		cp ${BACKUP_LOCAL_PATH}daily_db_backup_sqlite_${THEDATE}.gz ${BACKUP_LOCAL_PATH}monthly_db_backup_sqlite_${THEDATE}.gz
 	fi
 
 	#Copy Daily Webroot Backup for Monthly Backup
