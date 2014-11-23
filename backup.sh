@@ -87,6 +87,9 @@ then
 fi
 
 #S3 Sync
-s3cmd sync --delete-removed ${BACKUP_LOCAL_PATH} $AMAZON_S3_PATH
+if ${AMAZON_S3_UPLOAD_ACTIVE};
+then
+	s3cmd sync --delete-removed ${BACKUP_LOCAL_PATH} ${AMAZON_S3_PATH}
+fi
 
 echo "S3Backup Completed For: ${THEDATE}" >&2
