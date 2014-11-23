@@ -3,12 +3,20 @@
 #Local Settings and Options
 MYSQL_DB_USERNAME=ThisIsYourMySQLUsername
 MYSQL_DB_PASSWORD=ThisIsYourMySQLRootPassword
+
 POSTGRES_DB_USERNAME=ThisIsYourPostgresUsername
-MONGO_DB_USERNAME=ThisIsYourMongoDBUsernameå
+
+MONGO_DB_USERNAME=ThisIsYourMongoDBUsername
 MONGO_DB_PASSWORD=ThisIsYourMongoDBPassword
+
+SQLITE_PATH=/path/to/your/sqlite/database/file
+
 WEBROOT_LOCAL_PATH=/path/to/your/local/webroot
-BACKUP_LOCAL_PATH=/path/to/where/your/backups/will/be/locally
-AMAZON_S3_PATH=s3://BucketName/folder_in_bucket/
+BACKUP_LOCAL_PATH=/path/to/where/your/backups/will/be/locally/ends/with/slash/
+AMAZON_S3_PATH=s3://BucketName/folder_in_bucket/ends/with/slash/
+
 MYSQL_DUMP_ACTIVE=true
 POSTGRESQL_DUMP_ACTIVE=true
 MONGODB_DUMP_ACTIVE=true
+SQLITE_DUMP_ACTIVE=false
+AMAZON_S3_UPLOAD_ACTIVE=true
