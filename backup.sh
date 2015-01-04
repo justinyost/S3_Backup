@@ -32,6 +32,9 @@ gzip -9 ${BACKUP_LOCAL_PATH}daily_site_backup_${THEDATE}.tar
 #Find and delete old daily site backups that are over a week old
 find ${BACKUP_LOCAL_PATH}daily_site_backup_* -mtime +7 -exec rm -f {} \;
 
+#Find and delete old daily database backups that are over a week old
+find ${BACKUP_LOCAL_PATH}daily_db_backup_* -mtime +7 -exec rm -f {} \;
+
 if [ `date +%u` = 1 ]
 then
 	#Copy Daily Database Backup for Weekly DB Backups
@@ -57,6 +60,9 @@ then
 
 	#Find and delete old daily site backups that are over 4 weeks old
 	find ${BACKUP_LOCAL_PATH}weekly_site_backup_* -mtime +28 -exec rm -f {} \;
+
+	#Find and delete old daily database backups that are over 4 weeks old
+	find ${BACKUP_LOCAL_PATH}weekly_db_backup_* -mtime +28 -exec rm -f {} \;
 fi
 
 if [ `date +%d` = 01 ]
@@ -84,6 +90,9 @@ then
 
 	#Find and delete old monthly site backups that are over 1 year old
 	find ${BACKUP_LOCAL_PATH}monthly_site_backup_* -mtime +356 -exec rm -f {} \;
+
+	#Find and delete old monthly database backups that are over 1 year old
+	find ${BACKUP_LOCAL_PATH}monthly_db_backup_* -mtime +356 -exec rm -f {} \;
 fi
 
 #S3 Sync
