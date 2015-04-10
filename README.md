@@ -22,7 +22,7 @@ This script runs and creates daily (stored for 7 days), weekly (stored for 28 da
 
 There is a batch of configuration settings needed to get this running. These are in the `config.sh.default` shell script and none of the them need to be in quotes (as far as I have tested). Copy and rename the `config.sh.default` to `config.sh` and set the values to your particular setup. Copy and rename the `tar_exclude.txt.default` to `tar_exclude.txt` and add any paths/files to be excluded from the tar backup to this file.
 
-## Possible Issues When Using
+## Possible Issues When Using 
 
 1. S3Cmd needs to be configured first before use
 2. Recommend use case for running this is via a cron job, ensure the user the cron is running under has access to run the script and the correct permissions for access.
@@ -39,6 +39,12 @@ When working on this script, please fork and issue a PR for any new development.
 
 ### Reporting Issues
 
-[MIT Licensee](https://github.com/jtyost2/S3_Backup/blob/master/COPYRIGHT)
+Please use [GitHub Isuses](https://github.com/loadsys/S3_Backup/issues) for listing any known defects or issues.
 
-Copyright (c) 2014 Justin Yost
+## License ##
+
+[MIT](https://github.com/loadsys/S3_Backup/blob/master/LICENSE.md)
+
+## Copyright ##
+
+[Justin Yost](https://www.yostivanich.com/) 2015
