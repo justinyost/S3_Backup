@@ -1,6 +1,7 @@
 # Backup Script
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Latest Version](https://img.shields.io/github/release/jtyost2/S3_Backup.svg?style=flat-square)](https://github.com/jtyost2/S3_Backup/releases)
 
 This script runs and creates daily (stored for 7 days), weekly (stored for 28 days) and monthly (stored for 365 days) of a local webroot and complete database backup of [MySQL](http://www.mysql.com/), [PostgreSQL](http://www.postgresql.org/), [MongoDB](http://www.mongodb.org/) and [SQLite](https://www.sqlite.org/). Each is tared and gzipped and placed in a directory of your choosing and then optionally synched with an [Amazon S3 Bucket](http://aws.amazon.com/s3/) for off-site storage.
 
