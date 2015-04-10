@@ -41,11 +41,11 @@ When working on this script, please fork and issue a PR for any new development.
 
 ### Reporting Issues
 
-Please use [GitHub Isuses](https://github.com/loadsys/S3_Backup/issues) for listing any known defects or issues.
+Please use [GitHub Isuses](https://github.com/jtyost2/S3_Backup/issues) for listing any known defects or issues.
 
 ## License ##
 
-[MIT](https://github.com/loadsys/S3_Backup/blob/master/LICENSE.md)
+[MIT](https://github.com/jtyost2/S3_Backup/blob/master/LICENSE.md)
 
 ## Copyright ##
 
